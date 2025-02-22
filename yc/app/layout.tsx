@@ -1,16 +1,20 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import {Josefin_Sans,Blinker } from "next/font/google";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// Define fonts
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const josefin = Josefin_Sans(
+  { subsets: ["latin"], 
+    weight: ["400", "700"], 
+    variable: "--font-josefin" });
+
+const blinker = Blinker(
+  { subsets: ["latin"], 
+    weight: ["400", "700"], 
+    variable: "--font-blinker" });
+
+// Add some metadata for SEO
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,10 +29,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${josefin.variable} ${blinker.variable}`}
       >
         {children}
       </body>
+      
     </html>
   );
 }
