@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${josefin.variable} ${blinker.variable}`}
+        className={`${josefin.variable} ${blinker.variable} bg-black`}
       >
         {children}
       </body>

@@ -11,7 +11,7 @@ export default async function Navbar() {
         <header className='bg-white flex flex-row justify-between items-center p-3'>
             <nav >
                 <Link href="/" >
-                  <Image  src="/logo.png" alt="logo" width={144} height={30}/>
+                  <Image className='sm:w-[90px] md:w-[144px]'  src="/logo.png" alt="logo" width={144} height={30} />
                 </Link>
             </nav>
             {
