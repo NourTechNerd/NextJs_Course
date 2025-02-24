@@ -76,7 +76,7 @@ export default function StartupCard({startup}:StartupCardTypes) {
             <Link
             href = {`/?query=${startup.category.toLowerCase()}`}
             >
-            <p>{startup.category}</p>
+            <p className='bg-primary rounded-full text-white p-2 font-blinker font-bold'>{startup.category}</p>
             </Link>        
      
             <Link

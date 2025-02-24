@@ -3,7 +3,7 @@ import SearchFiled from '@/components/SearchFiled'
 import StartupCard from '@/components/StartupCard';
 import {client} from '@/sanity/lib/client'
 import {STARTUPS_QUERY} from '@/sanity/lib/queries'
-
+import { sanityFetch,SanityLive } from '@/sanity/lib/live';
 
 
 type SearchParams =
@@ -35,10 +35,12 @@ type Post =
 
 export default async function Home({searchParams}:{searchParams:SearchParams}) {
   const query = searchParams?.query || "";
+  const params = {search : query || null}
   //console.log("query",query)
 
-  const posts:Post[] = await client.fetch(STARTUPS_QUERY);
-  console.log("posts",posts)
+  //const posts:Post[] = await client.fetch(STARTUPS_QUERY); Ordinary fetch
+  const {data :posts}= await sanityFetch({query:STARTUPS_QUERY,params}) // Live fetch
+  //console.log("posts",posts)
 
   /*
   const posts = [
@@ -76,7 +78,7 @@ export default async function Home({searchParams}:{searchParams:SearchParams}) {
            {
             (posts.length > 0) ?
             (
-              posts.map((post)=>(
+              posts.map((post:Post)=>(
                 <StartupCard key={post._id} startup = {post} />
               ))
             )
@@ -88,6 +90,7 @@ export default async function Home({searchParams}:{searchParams:SearchParams}) {
           </ul>
           
         </section>
+        <SanityLive />
     </div>
   )
 }
