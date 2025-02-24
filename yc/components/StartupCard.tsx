@@ -7,16 +7,22 @@ import Image from 'next/image'
 
 type Post = 
 {
-    createdAt : string,
+    _createdAt : string,
     views : number,
-    id:string, 
+    _id:string, 
     description :string,
     image: string,
     category:string,
     title:string,
-    author : {
-        id:string,
-        name:string
+    slug:string,
+    Pitch:string,
+    Author : {
+        _id:number,
+        name:string,
+        username:string,
+        email:string,
+        image:string,
+        bio:string,
       },
 
   }
@@ -31,7 +37,7 @@ export default function StartupCard({startup}:StartupCardTypes) {
     className='startup-card w-[400px] flex flex-col'>
         <div className='flex-between'>
            <p className='startup_card_date font-blinker font-bold'>
-             {formatDate(startup.createdAt)}
+             {formatDate(startup._createdAt)}
            </p>
            <div className='flex flex-row gap-1.5'>
             <EyeIcon  className='text-primary'/>
@@ -40,16 +46,16 @@ export default function StartupCard({startup}:StartupCardTypes) {
         </div>
         <div className='flex-between'>
             <div className='flex flex-col'>
-                <Link href = {`/user/${startup.author.id}`}>
-                <p className='font-blinker font-bold mt-2'>{startup.author.name}</p>
+                <Link href = {`/user/${startup.Author._id}`}>
+                <p className='font-blinker font-bold mt-2'>{startup.Author.name}</p>
                 </Link>
-                <Link href = {`/startup/${startup.id}`}>
+                <Link href = {`/startup/${startup._id}`}>
                 <p className='font-blinker font-bold text-2xl line-clamp-1 mt-3'>{startup.title}</p>
                 </Link>
             </div>
-            <Link href = {`/user/${startup.author.id}`}>
+            <Link href = {`/user/${startup.Author._id}`}>
                   <Image 
-                  src={"https://placehold.co/48x48"} 
+                  src={startup.Author.image} 
                   alt= {"user avatar"} 
                   width = {40} 
                   height={40}
@@ -74,7 +80,7 @@ export default function StartupCard({startup}:StartupCardTypes) {
             </Link>        
      
             <Link
-            href = {`/startup/${startup.id}`}
+            href = {`/startup/${startup._id}`}
             className='startup-card_btn'
             >
             <p>Details</p>

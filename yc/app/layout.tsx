@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import {Josefin_Sans,Blinker } from "next/font/google";
+import 'easymde/dist/easymde.min.css';
+
 
 // Define fonts
 

@@ -1,7 +1,8 @@
 import React from 'react'
 import SearchFiled from '@/components/SearchFiled'
 import StartupCard from '@/components/StartupCard';
-
+import {client} from '@/sanity/lib/client'
+import {STARTUPS_QUERY} from '@/sanity/lib/queries'
 
 
 
@@ -10,10 +11,36 @@ type SearchParams =
   query : string
 }
 
+type Post = 
+{
+    _createdAt : string,
+    views : number,
+    _id:string, 
+    description :string,
+    image: string,
+    category:string,
+    title:string,
+    slug:string,
+    Pitch:string,
+    Author : {
+        _id:number,
+        name:string,
+        username:string,
+        email:string,
+        image:string,
+        bio:string,
+      },
 
-export default function Home({searchParams}:{searchParams:SearchParams}) {
+  }
+
+export default async function Home({searchParams}:{searchParams:SearchParams}) {
   const query = searchParams?.query || "";
   //console.log("query",query)
+
+  const posts:Post[] = await client.fetch(STARTUPS_QUERY);
+  console.log("posts",posts)
+
+  /*
   const posts = [
     {
       createdAt : '2025-9-23',
@@ -30,6 +57,7 @@ export default function Home({searchParams}:{searchParams:SearchParams}) {
 
     }
   ]
+    */
   return (
     <div>
           <section className='pink_container'>
@@ -49,7 +77,7 @@ export default function Home({searchParams}:{searchParams:SearchParams}) {
             (posts.length > 0) ?
             (
               posts.map((post)=>(
-                <StartupCard key={post.id} startup = {post} />
+                <StartupCard key={post._id} startup = {post} />
               ))
             )
             :
