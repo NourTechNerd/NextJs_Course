@@ -11,6 +11,11 @@ const nextConfig: NextConfig = {
       }
     ]
 
+  },
+  devIndicators:{
+    appIsrStatus:true,
+    buildActivity:true,
+    buildActivityPosition:'bottom-right'
   }
 };
 

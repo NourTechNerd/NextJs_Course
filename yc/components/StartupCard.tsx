@@ -34,9 +34,9 @@ type StartupCardTypes = {
 export default function StartupCard({startup}:StartupCardTypes) {
   return (
     <li 
-    className='startup-card w-[400px] flex flex-col'>
+    className='startup-card w-auto flex flex-col'>
         <div className='flex-between'>
-           <p className='startup_card_date font-blinker font-bold'>
+           <p className='startup-card_date font-blinker'>
              {formatDate(startup._createdAt)}
            </p>
            <div className='flex flex-row gap-1.5'>
@@ -76,7 +76,7 @@ export default function StartupCard({startup}:StartupCardTypes) {
             <Link
             href = {`/?query=${startup.category.toLowerCase()}`}
             >
-            <p className='bg-primary rounded-full text-white p-2 font-blinker font-bold'>{startup.category}</p>
+            <p className='font-blinker font-bold'>{startup.category}</p>
             </Link>        
      
             <Link

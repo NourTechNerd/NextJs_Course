@@ -5,7 +5,7 @@ import {auth,signIn,signOut} from '@/auth'
 
 export default async function Navbar() {
     const session = await auth()
-    //console.log("session",session)
+    console.log("session",session)
   return (
     <div>
         <header className='bg-white flex flex-row justify-between items-center p-3'>

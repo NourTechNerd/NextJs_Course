@@ -18,15 +18,50 @@ export const STARTUPS_QUERY = defineQuery(
                 _createdAt,
                 views,
                 description,
+                category
+            }
+    `
+)
+
+
+export const STARTUP_QUERY = defineQuery(
+    `
+    *[_type=='startup' && _id==$id ][0] 
+            {
+                Author ->{
+                            _id,
+                            name,
+                            image,
+                            bio,
+                            username,
+                        },
+                _id,
+                title,
+                slug,
+                image,
+                _createdAt,
+                views,
+                description,
                 Pitch,
                 category
             }
     `
 )
 
-// 2h:36min
-
-
+export const AUTHOR_BY_GITHUB_ID = defineQuery(
+    `
+    *[_type == 'author' && id == $id ][0]
+    {
+    _id,
+    id,
+    name,
+    username,
+    email,
+    image,
+    bio,
+    }
+    `
+)
 
 
 

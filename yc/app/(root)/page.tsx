@@ -11,7 +11,7 @@ type SearchParams =
   query : string
 }
 
-type Post = 
+export type Post = 
 {
     _createdAt : string,
     views : number,
@@ -62,7 +62,7 @@ export default async function Home({searchParams}:{searchParams:SearchParams}) {
     */
   return (
     <div>
-          <section className='pink_container'>
+        <section className='pink_container'>
           <h1 className='heading'> Pith your Startup and <br />Connect with Enterpreneurs</h1>
           <p className='sub-heading'>Submit Ideas, Vote on Pitches, and Get Noticed in Virtual Competitions</p>
           <SearchFiled  />
